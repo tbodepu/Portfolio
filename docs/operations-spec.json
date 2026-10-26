@@ -1,0 +1,1006 @@
+{
+  "version": "2026-10-14.2",
+  "provenance": {
+    "verizon": "User operational description and equipment counts, 14 October 2026. Approximate site fleet and reported quantities are separate from schematic allocation, geometry and presentation timing.",
+    "revelyst": "User facility brief and supplied layout. Existing conflicts and missing operating inputs remain unresolved."
+  },
+  "verizon": {
+    "brands": [
+      "Apple",
+      "Google",
+      "Samsung",
+      "Motorola",
+      "OnePlus"
+    ],
+    "networks": {
+      "reverse": {
+        "title": "Trade-in refurbishment / reverse logistics",
+        "subtitle": "Device receipt, cleaning, grading, testing, repair, storage, packaging, and dispatch.",
+        "groups": [
+          [
+            "01 / RECEIVE",
+            [
+              "smart",
+              "hospital"
+            ]
+          ],
+          [
+            "02 / CLEAN & GRADE",
+            [
+              "acs",
+              "manual-clean"
+            ]
+          ],
+          [
+            "03 / FUNCTION & RF",
+            [
+              "auto-function",
+              "manual-function",
+              "rf"
+            ]
+          ],
+          [
+            "04 / EXTENDED TEST",
+            [
+              "extended",
+              "display",
+              "temperature",
+              "audio"
+            ]
+          ],
+          [
+            "05 / REPAIR & FULFILL",
+            [
+              "repair",
+              "storage",
+              "quality",
+              "pack",
+              "outbound"
+            ]
+          ]
+        ],
+        "stages": [
+          {
+            "id": "smart",
+            "name": "Smart receive",
+            "mode": "Automated",
+            "confirmed": "Trade-in devices enter through smart receiving automation. Brands include Apple, Google, Samsung, Motorola, and OnePlus.",
+            "interfaceQuestions": [
+              "How is the device identity associated with its carrier, tray, or tote?",
+              "What transaction commits a successful receipt and releases the device?"
+            ],
+            "openQuestions": [
+              "Which conditions count as a smart-receive failure?",
+              "What is the physical and system re-entry point after hospital receiving?"
+            ],
+            "measurementCandidates": [
+              "Automated receive success fraction",
+              "Exception arrivals by reason",
+              "Receipt reconciliation errors"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "hospital",
+            "name": "Hospital receiving",
+            "mode": "Exception path",
+            "confirmed": "Hospital receiving handles cases where smart receive automation does not work.",
+            "interfaceQuestions": [
+              "Who owns the exception and updates the receipt status?",
+              "What acknowledgment permits a recovered device to rejoin the normal flow?"
+            ],
+            "openQuestions": [
+              "Which tasks are manual and which are assisted?",
+              "Can exceptions be processed offline, or do they hold upstream equipment?"
+            ],
+            "measurementCandidates": [
+              "Exception queue age",
+              "Recovery turnaround time",
+              "Repeat receiving exceptions"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "acs",
+            "name": "ACS / AGS",
+            "mode": "Automated",
+            "confirmed": "Six ACS and six AGS systems are reported, with cleaning / grading chambers, pick-and-place robots and an integrated conveyor room.",
+            "interfaceQuestions": [
+              "How do the chamber, robot, and conveyor exchange ready / busy / completed states?",
+              "Where are the cleaning result and cosmetic grade attached to the device record?"
+            ],
+            "openQuestions": [
+              "Are ACS and AGS separate stages, parallel routes, or combined equipment?",
+              "Which brands and models are eligible, and what causes a bypass?"
+            ],
+            "measurementCandidates": [
+              "Cycle-time distribution by recipe",
+              "Robot or chamber intervention frequency",
+              "Cleaning / grading disagreement rate"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false,
+            "equipmentCounts": {
+              "ACS": 6,
+              "AGS": 6
+            }
+          },
+          {
+            "id": "manual-clean",
+            "name": "Manual cleaning & cosmetic grading",
+            "mode": "Manual",
+            "confirmed": "Manual cleaning and cosmetic grading are part of the reverse-logistics operation.",
+            "interfaceQuestions": [
+              "How is a manually assigned grade reconciled with an automated grade?",
+              "What releases the unit to functionality testing?"
+            ],
+            "openQuestions": [
+              "Is this mandatory for every unit, a fallback, or a sampling process?",
+              "Which grade categories determine downstream handling?"
+            ],
+            "measurementCandidates": [
+              "Manual touch time",
+              "Grade agreement",
+              "Queue age by device family"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "auto-function",
+            "name": "RATA / RADI functionality testing",
+            "mode": "Automated",
+            "confirmed": "Fifteen RATA and ten RADI units are reported. The site has fourteen Yaskawa cobots; their assignment across equipment remains unspecified.",
+            "interfaceQuestions": [
+              "What sequence coordinates conveyor positioning, cobot pick/place, and test start / completion?",
+              "What prevents a device or result from being associated with the wrong carrier?"
+            ],
+            "openQuestions": [
+              "How are the 15 RATA and 10 RADI units assigned to products, and how do the 14 Yaskawa arms serve the equipment?",
+              "Which failures cause retest, manual test, or repair?"
+            ],
+            "measurementCandidates": [
+              "Robot-to-cell coordination efficiency",
+              "First-pass completion",
+              "Blocked / starved / fault time"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false,
+            "equipmentCounts": {
+              "RATA": 15,
+              "RADI": 10
+            }
+          },
+          {
+            "id": "manual-function",
+            "name": "Manual functionality testing",
+            "mode": "Manual",
+            "confirmed": "Manual functionality testing is another process in the refurbishment flow.",
+            "interfaceQuestions": [
+              "How does the manual test result update the same unit history?",
+              "What is the release rule when manual and automated results disagree?"
+            ],
+            "openQuestions": [
+              "Which units require this step and which may bypass it?",
+              "Is it confirmation, fallback, or a separate coverage set?"
+            ],
+            "measurementCandidates": [
+              "Manual test cycle time",
+              "Retest fraction",
+              "Disagreement by test item"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "rf",
+            "name": "Radio-frequency testing",
+            "mode": "Automated equipment",
+            "confirmed": "RF testing uses automated Rohde & Schwarz and Keysight systems.",
+            "interfaceQuestions": [
+              "How are device model, software state, and test recipe matched?",
+              "How are measurement results and limit versions retained?"
+            ],
+            "openQuestions": [
+              "Which equipment models and RF configurations are used at this site?",
+              "Which tests run on all units and which depend on NPI or fault routing?"
+            ],
+            "measurementCandidates": [
+              "RF first-pass yield",
+              "Retest rate by reason",
+              "Recipe / calibration-related interruptions"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "extended",
+            "name": "Extended testing under RF",
+            "mode": "Test coverage",
+            "confirmed": "Extended testing covers device subsystems under RF conditions, including the terms PUCD / CDWRF supplied by the user.",
+            "interfaceQuestions": [
+              "What conditions and results are linked across RF and subsystem tests?",
+              "What record distinguishes a test failure from an invalid test execution?"
+            ],
+            "openQuestions": [
+              "What are the exact meanings and scopes of PUCD and CDWRF?",
+              "What triggers extended testing, and what is the required sequence?"
+            ],
+            "measurementCandidates": [
+              "Coverage by device / test recipe",
+              "Invalid-test fraction",
+              "Retest loop depth"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "display",
+            "name": "Automated display testing",
+            "mode": "Automated equipment",
+            "confirmed": "Radiant Test systems perform automated display testing.",
+            "interfaceQuestions": [
+              "How is the device positioned and its test pattern synchronized with measurement?",
+              "How are display results assigned to the correct unit?"
+            ],
+            "openQuestions": [
+              "Confirm the equipment manufacturer, model, and local station name.",
+              "Which display characteristics and pass / fail limits are used?"
+            ],
+            "measurementCandidates": [
+              "Display first-pass yield",
+              "Positioning / acquisition retries",
+              "Failure distribution by model"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "temperature",
+            "name": "Peak-temperature testing",
+            "mode": "Test coverage",
+            "confirmed": "Peak-temperature testing is part of the described extended-test environment.",
+            "interfaceQuestions": [
+              "How are device state, test conditions, and the temperature record synchronized?",
+              "What stops or invalidates a test outside its required conditions?"
+            ],
+            "openQuestions": [
+              "What is the test method, dwell, equipment, and acceptance criterion?",
+              "Which products require this test?"
+            ],
+            "measurementCandidates": [
+              "Valid-test completion",
+              "Temperature-related failure rate",
+              "Test occupancy time"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "audio",
+            "name": "Head Acoustics audio testing",
+            "mode": "Test equipment",
+            "confirmed": "Head Acoustics systems support audio testing.",
+            "interfaceQuestions": [
+              "How are acoustic results, fixture setup, and device configuration traceable?",
+              "How does an invalid setup differ from a device failure in routing?"
+            ],
+            "openQuestions": [
+              "Which equipment model and audio tests are in scope?",
+              "Is audio testing in series, parallel, or conditional?"
+            ],
+            "measurementCandidates": [
+              "Audio first-pass yield",
+              "Setup / fixture retries",
+              "Repeatability by station"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "repair",
+            "name": "Repair workcells",
+            "mode": "Workcells",
+            "confirmed": "Repair workcells are part of the refurbishment operation.",
+            "interfaceQuestions": [
+              "What diagnostic history is available to the repair technician?",
+              "Which tests must be repeated before a repaired unit can be released?"
+            ],
+            "openQuestions": [
+              "What failures route to repair and what are the other dispositions?",
+              "What are the return points, maximum attempts, and final disposition rules?"
+            ],
+            "measurementCandidates": [
+              "Repair turnaround time",
+              "Repair yield",
+              "Repeat-repair fraction"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "storage",
+            "name": "ASRS, Locus & general racking",
+            "mode": "Storage & movement",
+            "confirmed": "ASRS, Locus and general racking are reported. The site AMR fleet is approximately 60; its allocation between operations and tasks is not supplied.",
+            "interfaceQuestions": [
+              "How is inventory location reconciled with process and quality status?",
+              "What authorizes retrieval or movement to the next operation?"
+            ],
+            "openQuestions": [
+              "Where does each storage or movement system sit in the actual process?",
+              "Are these buffers, reserve storage, order-fulfillment systems, or multiple uses?"
+            ],
+            "measurementCandidates": [
+              "Dwell time by status",
+              "Retrieval latency",
+              "Location / status reconciliation exceptions"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "quality",
+            "name": "Quality audit areas",
+            "mode": "Quality gate",
+            "confirmed": "Quality audit areas are part of the operation.",
+            "interfaceQuestions": [
+              "What audit status prevents packaging or shipping until release?",
+              "How is an audit finding routed back to the responsible process?"
+            ],
+            "openQuestions": [
+              "Where are audits performed and is sampling or 100% inspection used?",
+              "What rework, retest, or hold rules follow an audit failure?"
+            ],
+            "measurementCandidates": [
+              "Audit defect rate",
+              "Escape rate by cohort",
+              "Quality-hold age"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "pack",
+            "name": "Automated packaging",
+            "mode": "Automated",
+            "confirmed": "Automated packaging is used before outbound.",
+            "interfaceQuestions": [
+              "How are unit identity, order, packaging recipe, and label matched?",
+              "What is the response to a pack or label exception?"
+            ],
+            "openQuestions": [
+              "Which packaging steps are automated, and what is the exception path?",
+              "Are accessory kitting, sealing, labeling, and verification separate stations?"
+            ],
+            "measurementCandidates": [
+              "First-pass pack completion",
+              "Pack / label exception rate",
+              "Pack queue age"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "outbound",
+            "name": "Outbound",
+            "mode": "Dispatch",
+            "confirmed": "The reverse-logistics operation includes outbound dispatch.",
+            "interfaceQuestions": [
+              "Which inventory and order events record completion and shipment?",
+              "What blocks a device with an unresolved quality or repair status?"
+            ],
+            "openQuestions": [
+              "What are the cutoff, carrier, consolidation, and departure rules?",
+              "When is a device counted as shipped in the reported KPI?"
+            ],
+            "measurementCandidates": [
+              "On-time dispatch",
+              "Receipt-to-ship lead time",
+              "Shipment reconciliation errors"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          }
+        ],
+        "confirmedConnections": [
+          {
+            "from": "smart",
+            "to": "hospital",
+            "condition": "Smart receive automation does not work",
+            "returnPoint": null
+          }
+        ],
+        "routingNote": "Process families follow the described order. Their arrangement is logical, not a physical layout or a mandatory route for every device. The smart-receive fallback is confirmed; test bypasses, repair returns, audit positions, and storage interfaces need routing evidence."
+      },
+      "forward": {
+        "title": "Automated forward logistics",
+        "subtitle": "Automated receiving, ASRS and conveyor routing, storage, packing, and outbound; floor VAS is the identified manual area.",
+        "groups": [
+          [
+            "01 / RECEIVE",
+            [
+              "f-receive"
+            ]
+          ],
+          [
+            "02 / STORE & ROUTE",
+            [
+              "f-asrs",
+              "f-storage"
+            ]
+          ],
+          [
+            "EXCEPTION / FLOOR WORK",
+            [
+              "f-vas"
+            ]
+          ],
+          [
+            "03 / PACK & DISPATCH",
+            [
+              "f-pack",
+              "f-outbound"
+            ]
+          ]
+        ],
+        "stages": [
+          {
+            "id": "f-receive",
+            "name": "Automated inbound receiving",
+            "mode": "Automated",
+            "confirmed": "The forward-logistics section automatically receives product.",
+            "interfaceQuestions": [
+              "How are inbound receipt and storage requests handed to the automation controller?",
+              "How are product and carrier identities maintained through induction?"
+            ],
+            "openQuestions": [
+              "What handling unit enters the system: device, tote, carton, or another unit?",
+              "Where do unreadable or unmatched receipts go?"
+            ],
+            "measurementCandidates": [
+              "Receive success fraction",
+              "Induction queue age",
+              "Identity exceptions"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "f-asrs",
+            "name": "ASRS & routed conveyors",
+            "mode": "Automated",
+            "confirmed": "KNAPP conveyor equipment and an integrated ASRS environment are reported. Equipment quantities, layout and routing interfaces are not yet supplied.",
+            "interfaceQuestions": [
+              "What coordinates conveyor route allocation and ASRS storage / retrieval tasks?",
+              "What happens when a destination is unavailable or a task times out?"
+            ],
+            "openQuestions": [
+              "Which WMS / WCS / PLC systems own each decision?",
+              "Which buffers and transfer points are physically available?"
+            ],
+            "measurementCandidates": [
+              "Storage / retrieval latency",
+              "Transfer failures",
+              "Blocked and starved time"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "f-storage",
+            "name": "Storage & release",
+            "mode": "Automated storage",
+            "confirmed": "Storage spaces are part of the automated forward operation.",
+            "interfaceQuestions": [
+              "How are inventory availability, location, and release priority represented?",
+              "What prevents a duplicate retrieval request?"
+            ],
+            "openQuestions": [
+              "What allocation, release, and sequencing rules apply?",
+              "Are there multiple storage types or handling-unit conversions?"
+            ],
+            "measurementCandidates": [
+              "Inventory reconciliation",
+              "Release-to-retrieve time",
+              "Age by inventory status"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "f-vas",
+            "name": "Floor VAS / exception handling",
+            "mode": "Manual area",
+            "confirmed": "VAS is performed on the floor in a designated section; the user connects this manual area with situations where ASRS flow becomes problematic.",
+            "interfaceQuestions": [
+              "What moves work out of automation and what reconciles it before re-entry?",
+              "How is completion acknowledged without duplicate stock or tasks?"
+            ],
+            "openQuestions": [
+              "Separate planned VAS orders from ASRS recovery: are both handled here?",
+              "Where are the diversion and re-entry points?"
+            ],
+            "measurementCandidates": [
+              "VAS touch time",
+              "Exception queue age",
+              "Successful re-entry fraction"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "f-pack",
+            "name": "Automated packing",
+            "mode": "Automated",
+            "confirmed": "Packing is automated in forward logistics.",
+            "interfaceQuestions": [
+              "How do the retrieved product, order, pack recipe, and shipping label stay associated?",
+              "What downstream signal releases the completed pack?"
+            ],
+            "openQuestions": [
+              "Which pack equipment and verification steps are present?",
+              "What happens on a pack failure or when outbound is full?"
+            ],
+            "measurementCandidates": [
+              "First-pass packing completion",
+              "Pack bottleneck time",
+              "Pack / label errors"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "f-outbound",
+            "name": "Outbound",
+            "mode": "Dispatch",
+            "confirmed": "Outbound completes the forward-logistics operation.",
+            "interfaceQuestions": [
+              "What dispatch acknowledgment closes the order and inventory task?",
+              "How are incomplete orders and exceptions retained?"
+            ],
+            "openQuestions": [
+              "Confirm outbound routing, carrier sortation, loading, and automation boundaries.",
+              "Which departure cutoffs govern release priorities?"
+            ],
+            "measurementCandidates": [
+              "On-time dispatch",
+              "Release-to-ship lead time",
+              "Unresolved shipping exceptions"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          }
+        ],
+        "confirmedConnections": [],
+        "routingNote": "Floor VAS is shown as a separate process area, not a mandatory step in every order. Its planned-work rules, ASRS-exception diversion, and re-entry points require confirmation. Outbound automation boundaries also remain open."
+      }
+    },
+    "insights": [
+      [
+        "Device identity is the connecting thread",
+        "A test result, cosmetic grade, repair action, location, and shipment must refer to the same device. Map the actual identifiers and reconciliation points before animating the route.",
+        "Engineering hypothesis to validate"
+      ],
+      [
+        "A faster cell may not improve the whole operation",
+        "Inspect input mix, queues, shared resources, downstream capacity, and repeated tests together. Local efficiency gains need a separate end-to-end throughput and lead-time check.",
+        "Analysis question"
+      ],
+      [
+        "Rework changes the effective workload",
+        "Measure repeat visits and repair returns separately from new inbound units. Distinguish first-pass yield, retest yield, and final release yield.",
+        "Measurement design"
+      ],
+      [
+        "Automated flow depends on exception recovery",
+        "For forward logistics, identify who owns a failed task, how inventory stays reconciled, and what safely permits re-entry. Floor VAS and recovery should not be treated as the same process without confirmation.",
+        "Open interface definition"
+      ]
+    ],
+    "reportedEquipment": {
+      "amrs": {
+        "quantity": 60,
+        "approximate": true,
+        "operationAllocation": null
+      },
+      "yaskawa_cobots": {
+        "quantity": 14,
+        "stationAssignment": null
+      },
+      "acs": {
+        "quantity": 6
+      },
+      "ags": {
+        "quantity": 6
+      },
+      "rata": {
+        "quantity": 15
+      },
+      "radi": {
+        "quantity": 10
+      },
+      "asrs": {
+        "quantity": null
+      },
+      "knapp_conveyors": {
+        "quantity": null
+      },
+      "rf_extended_testers": {
+        "quantity": null
+      },
+      "automated_packaging": {
+        "quantity": null
+      }
+    }
+  },
+  "revelyst": {
+    "networks": {
+      "fulfillment": {
+        "title": "Retail + eCommerce fulfillment",
+        "subtitle": "A shared inbound and storage operation feeding two outbound channels.",
+        "groups": [
+          [
+            "01 / RECEIVE & BUILD",
+            [
+              "r-inbound",
+              "r-receive"
+            ]
+          ],
+          [
+            "02 / STORE & RELEASE",
+            [
+              "r-storage",
+              "r-replen"
+            ]
+          ],
+          [
+            "03 / PARCEL FLOW",
+            [
+              "r-pick",
+              "r-tower"
+            ]
+          ],
+          [
+            "PARALLEL / RETAIL FLOW",
+            [
+              "r-retail"
+            ]
+          ],
+          [
+            "04 / SHIP & RECONCILE",
+            [
+              "r-outbound",
+              "r-ira"
+            ]
+          ]
+        ],
+        "stages": [
+          {
+            "id": "r-inbound",
+            "name": "South-wall inbound",
+            "mode": "Robotic + fallback",
+            "confirmed": "Stretch unloads floor-loaded cartons at south-wall inbound. The brief gives four robots; the supplied marked layout shows three active docks.",
+            "interfaceQuestions": [
+              "What causes automatic unloading to stop and manual handling to begin?",
+              "How does downstream conveyor availability constrain unloading?"
+            ],
+            "openQuestions": [
+              "Supply eligible freight mix, cases/hour, intervention records, and manual fallback resources."
+            ],
+            "measurementCandidates": [
+              "Door-cycle throughput",
+              "Intervention frequency",
+              "Autonomous completion fraction"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "r-receive",
+            "name": "Receive, dimension & palletize",
+            "mode": "Mixed process",
+            "confirmed": "Receipt checks, CubiScan for missing LWH, and pallet building precede reserve or eligible direct-active putaway.",
+            "interfaceQuestions": [
+              "How are missing dimensions and mixed-SKU pallets represented in inventory?",
+              "What confirms that the destination location is eligible?"
+            ],
+            "openQuestions": [
+              "Supply receipt cycle times, dock count, receiving resources, and dimension coverage."
+            ],
+            "measurementCandidates": [
+              "Receipt-to-putaway time",
+              "Missing-dimension queue",
+              "Mixed-SKU pallet fraction"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "r-storage",
+            "name": "Reserve & active storage",
+            "mode": "Storage",
+            "confirmed": "43,300 reserve and 12,768 active pick locations are reported. Reserve and active storage have different functions and location structures.",
+            "interfaceQuestions": [
+              "What reconciles physical stock, location assignment, and WMS availability?",
+              "What authorizes reserve-to-active movement?"
+            ],
+            "openQuestions": [
+              "Validate CAD scale, aisle distances, SKU-to-location mapping, and resource counts."
+            ],
+            "measurementCandidates": [
+              "Location occupancy",
+              "Inventory availability",
+              "Partial-pallet space use"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "r-replen",
+            "name": "Replenishment & release",
+            "mode": "Business rules",
+            "confirmed": "Replenishment is in masterpack multiples. More than five trips triggers a pallet location; unslotted material blocks a wave.",
+            "interfaceQuestions": [
+              "How are replenishment completion and wave readiness acknowledged?",
+              "How are top-40 Specialty and CBK location rules prioritized when they overlap?"
+            ],
+            "openQuestions": [
+              "Supply replenishment triggers, demand distributions, trip times, and rule precedence."
+            ],
+            "measurementCandidates": [
+              "Active-slot availability at release",
+              "Replenishment trips",
+              "Blocked-wave duration"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "r-pick",
+            "name": "Locus each picking",
+            "mode": "AMR-assisted",
+            "confirmed": "Twenty Locus AMRs support eCommerce each picking, with the pallet area beside the tower and a north–south bridge.",
+            "interfaceQuestions": [
+              "How do pick completion, tote identity, and induction readiness connect?",
+              "What controls traffic and queueing at the bridge and induction points?"
+            ],
+            "openQuestions": [
+              "Supply pick cycle distributions, associate counts, and verified routes."
+            ],
+            "measurementCandidates": [
+              "Pick completion rate",
+              "Travel / pick / wait time",
+              "Induction queue age"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "r-tower",
+            "name": "Pick tower, VAS & parcel pack",
+            "mode": "Conveyors + work areas",
+            "confirmed": "The three-level pick tower has active pick locations on Levels 1 and 2 feeding the conveyor, and approximately ten pack stations beside the conveyor on Level 3. Inline weighing scales and automated print-and-apply feed the shared route to downlanes. VAS is in front of the tower; Locus is beside it.",
+            "interfaceQuestions": [
+              "What controls induction, accumulation, pack release, and parcel diversion?",
+              "What is the exact VAS route and where does it join the main flow?"
+            ],
+            "openQuestions": [
+              "Validate exact pack positions/count, scale and print-and-apply quantities, elevations, vertical transfers, belt connectivity, speeds, recirculation and interlocks."
+            ],
+            "measurementCandidates": [
+              "Pack queue",
+              "Recirculation count",
+              "Blocked / starved time"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false,
+            "stationCountApproximate": 10,
+            "activePickLevels": [
+              1,
+              2
+            ],
+            "packLevel": 3,
+            "clarificationSource": "User, 2026-10-15"
+          },
+          {
+            "id": "r-retail",
+            "name": "Retail pick & lane staging",
+            "mode": "Retail LTL",
+            "confirmed": "Retail case / pallet picking feeds staging. Nine lanes with fourteen pallet positions are reported; Lane 6 is a known congestion point.",
+            "interfaceQuestions": [
+              "How are PO, ship-to, carrier, and lane assignment represented?",
+              "What happens when a staging position or lane is full?"
+            ],
+            "openQuestions": [
+              "Reconcile the older all-LTL brief with later mixed retail / parcel lane descriptions.",
+              "Supply final lane map, departure schedule, and sort rules."
+            ],
+            "measurementCandidates": [
+              "Lane occupancy over time",
+              "Secondary-sort dwell",
+              "Missed cutoff risk"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "r-outbound",
+            "name": "North-wall outbound",
+            "mode": "Dispatch",
+            "confirmed": "Outbound is on the north wall and serves parcel and retail channels.",
+            "interfaceQuestions": [
+              "What establishes shipment completion across both channels?",
+              "How is a delayed load fed back into release and staging decisions?"
+            ],
+            "openQuestions": [
+              "Supply carrier pickup times, loading resources, and shipment event definitions."
+            ],
+            "measurementCandidates": [
+              "On-time dispatch",
+              "Pick-to-ship lead time",
+              "Staging age"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          },
+          {
+            "id": "r-ira",
+            "name": "Inventory remediation area",
+            "mode": "Exception loop",
+            "confirmed": "Damaged, unknown, or mis-received product goes to IRA for count / consolidation and then back to reserve.",
+            "interfaceQuestions": [
+              "What inventory state prevents unresolved product from wave allocation?",
+              "What reconciliation authorizes return to reserve?"
+            ],
+            "openQuestions": [
+              "Supply exception arrival mix, resolution resources, and processing time."
+            ],
+            "measurementCandidates": [
+              "Exception age",
+              "Inventory reconciliation success",
+              "Repeat exceptions"
+            ],
+            "cycleTimeSeconds": null,
+            "capacityUnitsPerHour": null,
+            "stationCount": null,
+            "routeValidated": false
+          }
+        ],
+        "confirmedConnections": [
+          {
+            "from": "r-storage",
+            "to": "r-replen",
+            "condition": "Reserve-to-active replenishment",
+            "returnPoint": null
+          },
+          {
+            "from": "r-ira",
+            "to": "r-storage",
+            "condition": "Inventory reconciled; return to reserve",
+            "returnPoint": null
+          }
+        ],
+        "routingNote": "South inbound and north outbound are confirmed. This chapter describes system relationships; the CAD animation remains in Simulation. Lane allocation, travel distances, conveyor connectivity, and operating inputs still require validation."
+      }
+    },
+    "insights": [
+      [
+        "Release readiness connects storage to throughput",
+        "The confirmed unslotted-SKU rule can block a wave. Investigate how slotting readiness and replenishment completion affect release, rather than measuring pick rate alone.",
+        "Rule grounded in the brief"
+      ],
+      [
+        "Downstream congestion can propagate upstream",
+        "Use the verified conveyor and staging controls to test how pack or Lane 6 holds affect induction and picking. Current animation demonstrates behavior; it does not estimate site losses.",
+        "Scenario to calibrate"
+      ],
+      [
+        "More locations do not establish a throughput gain",
+        "The capacity explorer calculates location counts. Demand coverage, travel, replenishment effort, and staffing still determine whether an expansion improves operation.",
+        "Model boundary"
+      ],
+      [
+        "The intervention record should explain the stop",
+        "Separate freight, vacuum/vision, reach, connectivity, and downstream causes when building the Stretch fault history. Link interventions to door-cycle completion.",
+        "Field-study design"
+      ]
+    ]
+  },
+  "simulationReadiness": {
+    "mode": "logical_process_specification",
+    "calibrated": false,
+    "distributionsSupplied": false,
+    "geometryValidated": false,
+    "canPredictThroughput": false
+  },
+  "measurementContract": {
+    "value": null,
+    "unit": null,
+    "numerator": null,
+    "denominator": null,
+    "baselineWindow": null,
+    "comparisonWindow": null,
+    "population": null,
+    "source": null,
+    "owner": null,
+    "target": null,
+    "uncertainty": null,
+    "verification": "not_supplied"
+  },
+  "requiredInputs": [
+    "Physical layout and measured distances",
+    "Device/SKU and handling-unit definitions",
+    "Approved route matrix and eligibility rules",
+    "Arrival profiles and product mix",
+    "Station and resource counts",
+    "Cycle-time distributions",
+    "Queue capacities and dispatch rules",
+    "Failure and repair histories",
+    "Test limits, recipe versions and retest logic",
+    "Shift calendars and labor allocation",
+    "Timestamped trace and observation sample for validation"
+  ]
+}

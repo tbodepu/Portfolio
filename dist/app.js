@@ -1,0 +1,6 @@
+const menu=document.querySelector('.menu-toggle'), navigation=document.querySelector('#navigation');
+function closeMenu(){menu.setAttribute('aria-expanded','false');navigation.classList.remove('open');}
+menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));navigation.classList.toggle('open',open);});
+navigation.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&navigation.classList.contains('open')){closeMenu();menu.focus();}});
+document.querySelector('.copy-email').addEventListener('click',async event=>{const button=event.currentTarget,status=document.querySelector('.copy-status');try{if(!navigator.clipboard)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText('eeshthrinadh@outlook.com');button.textContent='Email copied';status.textContent='Copied to clipboard.';}catch(error){button.textContent='Copy email';status.textContent='Select and copy the email address above.';const range=document.createRange();range.selectNodeContents(document.querySelector('.contact-email'));const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);}setTimeout(()=>{button.textContent='Copy email';status.textContent='';},4000);});

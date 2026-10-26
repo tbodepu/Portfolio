@@ -1,0 +1,18 @@
+operation,from_process,condition,to_process,mandatory_or_conditional,brand_model_eligibility,reentry_after_failure,max_attempts,evidence,status
+reverse,smart,Smart receive automation does not work,hospital,conditional,UNKNOWN,UNKNOWN,UNKNOWN,User brief 2026-10-14,connection_confirmed
+reverse,hospital,Receipt recovered,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,acs,Automation completed,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,manual-clean,Grade assigned,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,auto-function,Pass,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,auto-function,Fail or invalid execution,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,manual-function,Complete,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,rf,Pass,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,rf,Fail or invalid execution,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,extended,Test scope selected,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,repair,Repair completed,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,quality,Audit failure,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+reverse,storage,Work released,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+forward,f-asrs,Normal retrieval,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+forward,f-asrs,Task exception,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+forward,f-vas,VAS or recovery complete,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
+forward,f-pack,Pack completed,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,,needs_confirmation
